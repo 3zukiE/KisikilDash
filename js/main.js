@@ -45,30 +45,30 @@ const RANK_LEVEL_7 = "S";
 
 // ステージレベルに到達するために必要なスコア
 const SCORE_LEVEL_1 = 0;
-const SCORE_LEVEL_2 = 1000;
-const SCORE_LEVEL_3 = 2400;
-const SCORE_LEVEL_4 = 4600;
-const SCORE_LEVEL_5 = 8000;
-const SCORE_LEVEL_6 = 12000;
-const SCORE_LEVEL_7 = 18000;
+const SCORE_LEVEL_2 = 1200;
+const SCORE_LEVEL_3 = 2600;
+const SCORE_LEVEL_4 = 4800;
+const SCORE_LEVEL_5 = 8200;
+const SCORE_LEVEL_6 = 12400;
+const SCORE_LEVEL_7 = 18600;
 
 // 制作者スコア
-const SCORE_LEVEL_X = 20400;
+const SCORE_LEVEL_X = 23400;
 
 // ステージレベル毎のモンスター生成頻度
-const TIME_START_LEVEL_1 = 16;
+const TIME_START_LEVEL_1 = 15;
 const TIME_END_LEVEL_1 = 20;
 const TIME_START_LEVEL_2 = 12;
 const TIME_END_LEVEL_2 = 16;
 const TIME_START_LEVEL_3 = 9;
 const TIME_END_LEVEL_3 = 12;
-const TIME_START_LEVEL_4 = 6;
+const TIME_START_LEVEL_4 = 7;
 const TIME_END_LEVEL_4 = 9;
-const TIME_START_LEVEL_5 = 3;
+const TIME_START_LEVEL_5 = 5;
 const TIME_END_LEVEL_5 = 6;
-const TIME_START_LEVEL_6 = 2.5;
-const TIME_END_LEVEL_6 = 4;
-const TIME_START_LEVEL_7 = 1;
+const TIME_START_LEVEL_6 = 3;
+const TIME_END_LEVEL_6 = 4.5;
+const TIME_START_LEVEL_7 = 1.5;
 const TIME_END_LEVEL_7 = 2.5;
 
 // ステージレベルレベル毎のモンスターの速度
@@ -79,7 +79,7 @@ const SPEED_LEVEL_3 = 1.3;
 const SPEED_LEVEL_4 = 1.6;
 const SPEED_LEVEL_5 = 1.95;
 const SPEED_LEVEL_6 = 2.4;
-const SPEED_LEVEL_7 = 3;
+const SPEED_LEVEL_7 = 2.9;
 
 const ON = 1;
 const OFF = 0;
