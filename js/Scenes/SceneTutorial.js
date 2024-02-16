@@ -1,4 +1,4 @@
-// チュートリアルクラスを定義
+// TutorialSceneクラスを定義
 phina.define("SceneTutorial", {
   // 継承
   superClass: "phina.display.DisplayScene",

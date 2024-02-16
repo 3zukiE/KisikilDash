@@ -1,4 +1,4 @@
-// ポーズクラスを定義
+// PauseSceneクラスを定義
 phina.define("ScenePause", {
   // 継承
   superClass: "phina.display.DisplayScene",

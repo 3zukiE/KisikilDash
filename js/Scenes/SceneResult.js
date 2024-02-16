@@ -1,4 +1,4 @@
-// MainScene クラスを定義
+// ResultScene クラスを定義
 phina.define("SceneResult", {
   superClass: "phina.display.DisplayScene",
   init: function (option) {
@@ -86,7 +86,7 @@ phina.define("SceneResult", {
       var url = phina.social.Twitter.createURL({
         text: text,
         hashtags: ["遊戯王", "フリーゲーム"],
-        url: "https://kisikildash.firebaseapp.com/",
+        url: "https://3zukie.github.io/KisikilDash/",
       });
 
       // 新規ウィンドウで開く場合（OS・端末によっては制限があってダメかも？）

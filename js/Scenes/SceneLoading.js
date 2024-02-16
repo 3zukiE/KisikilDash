@@ -1,3 +1,4 @@
+// LoadingScene クラスを定義
 phina.define("SceneLoading", {
   superClass: "phina.display.DisplayScene",
 
