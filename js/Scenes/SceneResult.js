@@ -13,7 +13,7 @@ phina.define("SceneResult", {
     var listResultBack = [
       "result_back_EF_img", // ランクF
       "result_back_EF_img", // ランクE
-      "result_back_CD_img", // ランクD
+      "result_back_EF_img", // ランクD
       "result_back_CD_img", // ランクC
       "result_back_CD_img", // ランクB
       "result_back_CD_img", // ランクA
