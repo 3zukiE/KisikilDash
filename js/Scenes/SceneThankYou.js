@@ -20,7 +20,6 @@ phina.define("SceneThankYou", {
     thankYouKisikil.y = this.gridY.center();
 
 
-
     this.onclick = function () {
       // 自身を取り除く
       MySoundManager.prototype.MyPlaySound("pause_se", false);

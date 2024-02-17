@@ -232,7 +232,7 @@ phina.define("SceneMain", {
       } else {
         // モンスター生成時、7%の確率でアイテム出現
         var spawnFlag = Math.randint(0, 99);
-        if (92 >= spawnFlag) {
+        if (7 <= spawnFlag) {
           var monsterFlag = Math.randint(0, 8);
           if (0 === monsterFlag) {
             // ハネクリボー
@@ -780,13 +780,10 @@ phina.define("SceneMain", {
 
       // スコア表示
       this.scoreLabel.text = "スコア： " + g_score;
-      // +
-      // " レベル： " +
-      // g_level +
-      // "\n経過秒数/生成秒数:" +
-      // (this.time / 1000).toFixed(3) +
-      // "/" +
-      // this.makeMonsterTime / 10
+
+      //確認用
+      // this.scoreLabel.text = "スコア： " + g_score + " レベル： " + g_level +
+      // "\n経過秒数/生成秒数:" + (this.time / 1000).toFixed(3) + "/" + this.makeMonsterTime / 10
 
       // ホーン演出
       if (1 === g_hornFlg) {

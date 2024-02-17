@@ -22,22 +22,15 @@ phina.define("ScenePause", {
       .setPosition(this.gridX.center(), this.gridY.center()) // 座標設定（(16,16)で画面右下）
       .addChildTo(this); // 現在のページに対してこのラベルを追加する
 
-    // this.onclick = function () {
-    //   // 自身を取り除く
-    //   MySoundManager.prototype.MyPlaySound("pause_se", false);
-    //   MySoundManager.prototype.SetVolumeMyPlaySound(0.2, true);
-    //   this.exit();
-    // };
+    // ポーズ解除
+    this.onclick = function () {
+      // 自身を取り除く
+      MySoundManager.prototype.MyPlaySound("pause_se", false);
+      MySoundManager.prototype.SetVolumeMyPlaySound(0.2, true);
+      this.exit();
+    };
 
-    // シーン遷移
-    this.on("pointend", function () {
-      if (ON === this.exitFlag) {
-        MySoundManager.prototype.SetVolumeMyPlaySound(0.2, true);
-        this.exit();
-      }
-    });
-
-    // シーン遷移
+    // ポーズ解除
     this.on("keyup", function () {
       if (ON === this.exitFlag) {
         MySoundManager.prototype.SetVolumeMyPlaySound(0.2, true);

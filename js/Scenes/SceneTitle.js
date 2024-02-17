@@ -37,14 +37,15 @@ phina.define("SceneTitle", {
     titleLogo.y = this.gridY.center(-2.3);
 
     // バージョンラベル
-    var scoreLabel = Label({
-      text: "Ver " + g_version,
+    var versionLabel = Label({
+      text: "Ver: " + g_version + "\nX: @",
       fontSize: 24,
       fill: "white",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
-      x: this.gridX.center(-7.4),
-      y: this.gridY.center(7.5),
+      x: this.gridX.center(-6.2),
+      y: this.gridY.center(8),
     }).addChildTo(this);
+    versionLabel.setOrigin(1, 1)
 
     // プレイボタン
     var titlePlayButton = Sprite("title_play_button_img");

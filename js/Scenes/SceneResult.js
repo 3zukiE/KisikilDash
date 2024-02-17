@@ -77,7 +77,7 @@ phina.define("SceneResult", {
       this.tweetFlg = ON;
       MySoundManager.prototype.MyPlaySound("enter_se", false);
       var text =
-        "無料ゲーム #キスキルダッシュ でScore: {0}点でrank: {1}を獲得したよ！\n敗北要因: {2}(ATK:{3})\n\nみんなもプレイしてみよう！\n".format(
+        "無料同人ゲーム #キスキルダッシュ でScore: {0}点でrank: {1}を獲得したよ！\n敗北要因: {2}(ATK:{3})\n\nみんなもプレイしてみよう！\n".format(
           g_score,
           g_rank,
           option.deathName,

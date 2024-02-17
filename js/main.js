@@ -53,17 +53,17 @@ const SCORE_LEVEL_6 = 12400;
 const SCORE_LEVEL_7 = 18600;
 
 // 制作者スコア
-const SCORE_LEVEL_X = 23400;
+const SCORE_LEVEL_X = 24400;
 
 // ステージレベル毎のモンスター生成頻度
 const TIME_START_LEVEL_1 = 15;
-const TIME_END_LEVEL_1 = 20;
+const TIME_END_LEVEL_1 = 22;
 const TIME_START_LEVEL_2 = 12;
-const TIME_END_LEVEL_2 = 16;
+const TIME_END_LEVEL_2 = 18;
 const TIME_START_LEVEL_3 = 9;
-const TIME_END_LEVEL_3 = 12;
+const TIME_END_LEVEL_3 = 14;
 const TIME_START_LEVEL_4 = 7;
-const TIME_END_LEVEL_4 = 9;
+const TIME_END_LEVEL_4 = 10;
 const TIME_START_LEVEL_5 = 5;
 const TIME_END_LEVEL_5 = 6;
 const TIME_START_LEVEL_6 = 3;
@@ -76,8 +76,8 @@ const MONSTER_BASE_SPEED = 12;
 const SPEED_LEVEL_1 = 1;
 const SPEED_LEVEL_2 = 1.15;
 const SPEED_LEVEL_3 = 1.3;
-const SPEED_LEVEL_4 = 1.6;
-const SPEED_LEVEL_5 = 1.95;
+const SPEED_LEVEL_4 = 1.5;
+const SPEED_LEVEL_5 = 1.9;
 const SPEED_LEVEL_6 = 2.4;
 const SPEED_LEVEL_7 = 2.9;
 
