@@ -13,11 +13,11 @@ phina.define("SceneResult", {
     var listResultBack = [
       "result_back_EF_img", // ランクF
       "result_back_EF_img", // ランクE
-      "result_back_EF_img", // ランクD
+      "result_back_CD_img", // ランクD
       "result_back_CD_img", // ランクC
       "result_back_CD_img", // ランクB
       "result_back_CD_img", // ランクA
-      "result_back_CD_img", // ランクS
+      "result_back_S_img", // ランクS
     ];
     var result_back = Sprite(listResultBack[g_level]);
     result_back.addChildTo(this);
@@ -129,7 +129,7 @@ phina.define("SceneResult", {
     resultFont.addChildTo(this);
     resultFont.setPosition(
       this.gridX.center(3.5),
-      this.gridY.center(-1),
+      this.gridY.center(-0.8),
     )
 
     // 死因ラベル

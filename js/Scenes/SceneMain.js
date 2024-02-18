@@ -233,7 +233,7 @@ phina.define("SceneMain", {
         // モンスター生成時、7%の確率でアイテム出現
         var spawnFlag = Math.randint(0, 99);
         if (7 <= spawnFlag) {
-          var monsterFlag = Math.randint(0, 8);
+          var monsterFlag = Math.randint(0, 12);
           if (0 === monsterFlag) {
             // ハネクリボー
             monster = ObjectWingedKuriboh(
@@ -283,6 +283,30 @@ phina.define("SceneMain", {
               g_groundLine
             ).addChildTo(e);
           } else if (8 === monsterFlag) {
+            // キラー・トマト
+            monster = ObjectMysticTomato(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (9 === monsterFlag) {
+            // ピュアリィ
+            monster = ObjectPurely(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (10 === monsterFlag) {
+            // アギド
+            monster = ObjectAgido(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (11 === monsterFlag) {
+            // クリッター
+            monster = ObjectSangan(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (12 === monsterFlag) {
             // ゲート・ブロッカー
             monster = ObjectGateblocker(
               this.gridX.span(16),

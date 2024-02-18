@@ -2,31 +2,39 @@ const KISIKIL_WIDTH = 607;
 const KISIKIL_HEIGHT = 339;
 const THANK_YOU_WIDTH = 685;
 const THANK_YOU_HEIGHT = 317;
-const HORN_OF_THE_UNICORN_WIDTH = 69;
-const HORN_OF_THE_UNICORN_HEIGHT = 82;
+const HORN_OF_THE_UNICORN_WIDTH = 82;
+const HORN_OF_THE_UNICORN_HEIGHT = 97;
 const MYSTICAL_SPACE_TYPHOON_WIDTH = 194;
 const MYSTICAL_SPACE_TYPHOON_HEIGHT = 219;
 const TREASURE_WIDTH = 71;
 const TREASURE_HEIGHT = 75;
 
-const KURIBOH_WIDTH = 86;
-const KURIBOH_HEIGHT = 96;
-const WINGED_KURIBOH_WIDTH = 158;
-const WINGED_KURIBOH_HEIGHT = 104;
-const CARDCAR_D_WIDTH = 165;
-const CARDCAR_D_HEIGHT = 73;
-const HALLOHALLO_WIDTH = 99;
-const HALLOHALLO_HEIGHT = 118;
+const AGIDO_WIDTH = 161;
+const AGIDO_HEIGHT = 125;
 const BITRON_WIDTH = 131;
 const BITRON_HEIGHT = 97;
-const MARSHMALLON_WIDTH = 114;
-const MARSHMALLON_HEIGHT = 130;
-const GATE_BLOCKER_WIDTH = 105;
-const GATE_BLOCKER_HEIGHT = 131;
+const CARDCAR_D_WIDTH = 165;
+const CARDCAR_D_HEIGHT = 73;
 const DARK_RESONATOR_WIDTH = 163;
 const DARK_RESONATOR_HEIGHT = 145;
+const GATE_BLOCKER_WIDTH = 105;
+const GATE_BLOCKER_HEIGHT = 131;
 const GENEX_CONTROLLER_WIDTH = 143;
 const GENEX_CONTROLLER_HEIGHT = 167;
+const HALLOHALLO_WIDTH = 99;
+const HALLOHALLO_HEIGHT = 118;
+const KURIBOH_WIDTH = 86;
+const KURIBOH_HEIGHT = 96;
+const MARSHMALLON_WIDTH = 114;
+const MARSHMALLON_HEIGHT = 130;
+const MYSTIC_TOMATO_WIDTH = 84;
+const MYSTIC_TOMATO_HEIGHT = 84;
+const PURELY_WIDTH = 155;
+const PURELY_HEIGHT = 120;
+const SANGAN_WIDTH = 120;
+const SANGAN_HEIGHT = 85;
+const WINGED_KURIBOH_WIDTH = 158;
+const WINGED_KURIBOH_HEIGHT = 104;
 
 // ロード用アセット読み込み
 var PREV_ASSET = {
@@ -83,6 +91,7 @@ var MAIN_ASSET = {
     mystical_space_typhoon_img: "assets/img/item/mystical_space_typhoon.png",
 
     // モンスター
+    agido_img: "assets/img/monster/agido.png",
     bitron_img: "assets/img/monster/bitron.png",
     cardcar_d_img: "assets/img/monster/cardcar_d.png",
     dark_resonator_img: "assets/img/monster/dark_resonator.png",
@@ -91,6 +100,9 @@ var MAIN_ASSET = {
     hallohallo_img: "assets/img/monster/hallohallo.png",
     kuriboh_img: "assets/img/monster/kuriboh.png",
     marshmallon_img: "assets/img/monster/marshmallon.png",
+    mystic_tomato_img: "assets/img/monster/mystic_tomato.png",
+    purely_img: "assets/img/monster/purely.png",
+    sangan_img: "assets/img/monster/sangan.png",
     winged_kuriboh_img: "assets/img/monster/winged_kuriboh.png",
   },
   // スプライト情報定義
@@ -99,7 +111,7 @@ var MAIN_ASSET = {
     tutorial_ss: {
       // 画像の情報
       frame: {
-        width: 1152, // 1コマの横幅
+        width: 1017, // 1コマの横幅
         height: 648, // 1コマの縦幅
         rows: 1, // 画像内に設定されているコマの縦数
         cols: 2, // 画像内に設定されているコマの横数
@@ -385,6 +397,48 @@ var MAIN_ASSET = {
       },
     },
 
+    // アギドスプライトシート
+    agido_ss: {
+      // 画像の情報
+      frame: {
+        width: AGIDO_WIDTH, // 1コマの横幅
+        height: AGIDO_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // ハネクリボースプライトシート
+    sangan_ss: {
+      // 画像の情報
+      frame: {
+        width: SANGAN_WIDTH, // 1コマの横幅
+        height: SANGAN_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
     // カードカー・Dスプライトシート
     cardcar_d_ss: {
       // 画像の情報
@@ -454,6 +508,48 @@ var MAIN_ASSET = {
       frame: {
         width: MARSHMALLON_WIDTH, // 1コマの横幅
         height: MARSHMALLON_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // キラートマトスプライトシート
+    mystic_tomato_ss: {
+      // 画像の情報
+      frame: {
+        width: MYSTIC_TOMATO_WIDTH, // 1コマの横幅
+        height: MYSTIC_TOMATO_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // マシュマロンスプライトシート
+    purely_ss: {
+      // 画像の情報
+      frame: {
+        width: PURELY_WIDTH, // 1コマの横幅
+        height: PURELY_HEIGHT, // 1コマの縦幅
         rows: 1, // 画像内に設定されているコマの縦数
         cols: 2, // 画像内に設定されているコマの横数
       },
@@ -558,6 +654,7 @@ var MAIN_ASSET = {
 var RESULT_ASSET = {
   image: {
     // リザルト
+    result_back_S_img: "assets/img/result/result_back_S.jpg",
     result_back_CD_img: "assets/img/result/result_back_CD.jpg",
     result_back_EF_img: "assets/img/result/result_back_EF.jpg",
     result_title_button_img: "assets/img/result/result_title_button.png",

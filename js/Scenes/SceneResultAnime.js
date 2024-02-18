@@ -29,7 +29,7 @@ phina.define("SceneResultAnime", {
       "result_back_CD_img", // ランクC
       "result_back_CD_img", // ランクB
       "result_back_CD_img", // ランクA
-      "result_back_CD_img", // ランクS
+      "result_back_S_img", // ランクS
     ];
     var result_back = Sprite(listResultBack[g_level]);
     result_back.addChildTo(this);
@@ -165,7 +165,7 @@ phina.define("SceneResultAnime", {
       .to(
         {
           x: this.gridX.center(3.5),
-          y: this.gridY.center(-1),
+          y: this.gridY.center(-0.8),
           rotation: 720,
           scaleX: 1,
           scaleY: 1,
