@@ -232,7 +232,7 @@ phina.define("SceneMain", {
       } else {
         // モンスター生成時、7%の確率でアイテム出現
         var spawnFlag = Math.randint(0, 99);
-        if (7 <= spawnFlag) {
+        if (10 <= spawnFlag) {
           var monsterFlag = Math.randint(0, 12);
           if (0 === monsterFlag) {
             // ハネクリボー
@@ -317,18 +317,21 @@ phina.define("SceneMain", {
           }
         } else {
           // アイテムの出現
-          if (OFF === g_hornKisikilFlag) {
+          if (OFF === g_hornKisikilFlag && 1600 <= g_tempScore) {
             // 一角獣のホーンを生成
             monster = ObjectHorn(this.gridX.span(16), g_groundLine).addChildTo(
               e
             );
             g_makeMonsterFlag = OFF;
           } else {
-            // すでに取得している場合、クリボーでも出しとくか
-            monster = ObjectKuriboh(
-              this.gridX.span(16),
-              g_groundLine
-            ).addChildTo(e);
+            // その他の場合、クリボーの生成(5兄弟のランダム生成)
+            var shinyFlag = Math.randint(0, 99);
+            if (99 <= shinyFlag){
+              monster = ObjectKuriboh(
+                this.gridX.span(16),
+                g_groundLine
+              ).addChildTo(e);
+            }
           }
         }
       }
@@ -571,9 +574,9 @@ phina.define("SceneMain", {
 
     // ホーン取得時の演出
     this.horn = function () {
+      g_tempScore = 0;
       g_makeMonsterFlag = ON;
       g_hornKisikilFlag = ON;
-      g_tempScore = 0;
       g_kisikilAtk += 700;
       MySoundManager.prototype.MyPlaySound("enter2_se", false);
 
@@ -608,10 +611,11 @@ phina.define("SceneMain", {
         .to({ scaleX: -1 }, 100)
         .to({ scaleX: 1 }, 100)
         .call(function () {
-          mainKisikil.direction = KISIKIL_DASH;
-          mainKisikil.updateStateFlag = ON;
+          g_tempScore = 0;
           g_makeMonsterFlag = ON;
           g_kisikilAtk = 500;
+          mainKisikil.direction = KISIKIL_DASH;
+          mainKisikil.updateStateFlag = ON;
         });
 
       // ラベル表示

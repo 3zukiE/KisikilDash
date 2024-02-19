@@ -88,7 +88,7 @@ phina.define("SceneLoading", {
     // ラベル
     var label = phina.display
       .Label({
-        text: "読み込み中。スマホはちょっと時間かかるかも...",
+        text: "読み込み中。スマホはちょっと時間かかるかも...\n※横持ち推奨",
       })
       .addChildTo(baseLayer)
       .setPosition(this.width * 0.5, this.height * 0.2);

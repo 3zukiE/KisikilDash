@@ -38,7 +38,7 @@ phina.define("SceneTitle", {
 
     // バージョンラベル
     var versionLabel = Label({
-      text: "Ver: " + g_version + "\nX: @",
+      text: "Ver: " + g_version + "\nX: @3zukiE",
       fontSize: 24,
       fill: "white",
       backgroundColor: "rgba(0, 0, 0, 0.5)",
