@@ -7,7 +7,7 @@ const RIGHT = 1;
 const LEFT = 2;
 
 // ゲームバージョン
-const g_version = 0.8;
+const g_version = 0.9;
 
 const KISIKIL_IDLE = 0;
 const KISIKIL_DASH = KISIKIL_IDLE + 1;
