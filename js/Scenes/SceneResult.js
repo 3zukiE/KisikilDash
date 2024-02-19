@@ -15,8 +15,8 @@ phina.define("SceneResult", {
       "result_back_EF_img", // ランクE
       "result_back_CD_img", // ランクD
       "result_back_CD_img", // ランクC
-      "result_back_CD_img", // ランクB
-      "result_back_CD_img", // ランクA
+      "result_back_AB_img", // ランクB
+      "result_back_AB_img", // ランクA
       "result_back_S_img", // ランクS
     ];
     var result_back = Sprite(listResultBack[g_level]);

@@ -22,6 +22,7 @@ phina.define("SceneMain", {
     g_level = LEVEL_1;
     g_hornKisikilFlag = OFF;
     g_kisikilAtk = 500;
+    g_tempScore = 0;
     this.deathName = "バグってます";
     this.gameEndType = 0;
     this.atk = 0;
@@ -233,7 +234,7 @@ phina.define("SceneMain", {
         // モンスター生成時、7%の確率でアイテム出現
         var spawnFlag = Math.randint(0, 99);
         if (10 <= spawnFlag) {
-          var monsterFlag = Math.randint(0, 12);
+          var monsterFlag = Math.randint(0, 13);
           if (0 === monsterFlag) {
             // ハネクリボー
             monster = ObjectWingedKuriboh(
@@ -307,6 +308,12 @@ phina.define("SceneMain", {
               g_groundLine
             ).addChildTo(e);
           } else if (12 === monsterFlag) {
+            // 蛇眼の炎燐
+            monster = ObjectSnakeEyesPoplar(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (13 === monsterFlag) {
             // ゲート・ブロッカー
             monster = ObjectGateblocker(
               this.gridX.span(16),

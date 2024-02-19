@@ -8,6 +8,8 @@ const MYSTICAL_SPACE_TYPHOON_WIDTH = 194;
 const MYSTICAL_SPACE_TYPHOON_HEIGHT = 219;
 const TREASURE_WIDTH = 71;
 const TREASURE_HEIGHT = 75;
+const ROUGHKIL_WIDTH = 594;
+const ROUGHKIL_HEIGHT = 690;
 
 const AGIDO_WIDTH = 161;
 const AGIDO_HEIGHT = 125;
@@ -33,6 +35,8 @@ const PURELY_WIDTH = 155;
 const PURELY_HEIGHT = 120;
 const SANGAN_WIDTH = 120;
 const SANGAN_HEIGHT = 85;
+const SNAKE_EYES_POPLAR_WIDTH = 156;
+const SNAKE_EYES_POPLAR_HEIGHT = 120;
 const WINGED_KURIBOH_WIDTH = 158;
 const WINGED_KURIBOH_HEIGHT = 104;
 
@@ -74,6 +78,7 @@ var MAIN_ASSET = {
     gallery_img: "assets/img/gallery/gallery.jpg",
     gallery_button_img: "assets/img/gallery/gallery_button.png",
     thank_you_img: "assets/img/gallery/thank_you.png",
+    roughkil_img: "assets/img/gallery/roughkil.png",
 
     // メイン
     main_ground_img: "assets/img/main/main_ground.png",
@@ -103,6 +108,7 @@ var MAIN_ASSET = {
     mystic_tomato_img: "assets/img/monster/mystic_tomato.png",
     purely_img: "assets/img/monster/purely.png",
     sangan_img: "assets/img/monster/sangan.png",
+    snake_eyes_poplar_img: "assets/img/monster/snake_eyes_poplar.png",
     winged_kuriboh_img: "assets/img/monster/winged_kuriboh.png",
   },
   // スプライト情報定義
@@ -355,6 +361,27 @@ var MAIN_ASSET = {
       },
     },
 
+    // ラフキルスプライトシート
+    roughkil_ss: {
+      // 画像の情報
+      frame: {
+        width: ROUGHKIL_WIDTH, // 1コマの横幅
+        height: ROUGHKIL_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 1, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 0, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
     // クリボースプライトシート
     kuriboh_ss: {
       // 画像の情報
@@ -382,6 +409,27 @@ var MAIN_ASSET = {
       frame: {
         width: WINGED_KURIBOH_WIDTH, // 1コマの横幅
         height: WINGED_KURIBOH_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // 蛇眼の炎燐スプライトシート
+    snake_eyes_poplar_ss: {
+      // 画像の情報
+      frame: {
+        width: SNAKE_EYES_POPLAR_WIDTH, // 1コマの横幅
+        height: SNAKE_EYES_POPLAR_HEIGHT, // 1コマの縦幅
         rows: 1, // 画像内に設定されているコマの縦数
         cols: 2, // 画像内に設定されているコマの横数
       },
@@ -655,6 +703,7 @@ var RESULT_ASSET = {
   image: {
     // リザルト
     result_back_S_img: "assets/img/result/result_back_S.jpg",
+    result_back_AB_img: "assets/img/result/result_back_AB.jpg",
     result_back_CD_img: "assets/img/result/result_back_CD.jpg",
     result_back_EF_img: "assets/img/result/result_back_EF.jpg",
     result_title_button_img: "assets/img/result/result_title_button.png",
