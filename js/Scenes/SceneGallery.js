@@ -86,7 +86,7 @@ phina.define("SceneGallery", {
 
     // コメントのラベル
     var galleryCommentLabel = Label({
-      text: GalleryCommentTextData[Galley_order].text,
+      text: option.KONAMIcommandFlag ? "隠しコマンドを見つけたの！？\nやるね！" : GalleryCommentTextData[Galley_order].text,
       fontSize: 36,
       fill: "black",
       x: this.gridX.center(0.2),
@@ -131,6 +131,15 @@ phina.define("SceneGallery", {
           this.gridY.center(-1.6)
         );
         galleryMonster.setScale(1, 1);
+      }
+
+      // ラフキルの調整
+      if(GalleryMonsterTextData[Galley_order].image === "roughkil_img"){
+        galleryMonster.setPosition(
+          this.gridX.center(1),
+          this.gridY.center(5)
+        );
+        galleryMonster.setScale(1.2, 1.2);
       }
     };
 

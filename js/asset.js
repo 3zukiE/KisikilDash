@@ -25,8 +25,16 @@ const GENEX_CONTROLLER_WIDTH = 143;
 const GENEX_CONTROLLER_HEIGHT = 167;
 const HALLOHALLO_WIDTH = 99;
 const HALLOHALLO_HEIGHT = 118;
+const KURIBAH_WIDTH = 86;
+const KURIBAH_HEIGHT = 96;
+const KURIBEE_WIDTH = 86;
+const KURIBEE_HEIGHT = 96;
+const KURIBEH_WIDTH = 86;
+const KURIBEH_HEIGHT = 96;
 const KURIBOH_WIDTH = 86;
 const KURIBOH_HEIGHT = 96;
+const KURIBOO_WIDTH = 86;
+const KURIBOO_HEIGHT = 96;
 const MARSHMALLON_WIDTH = 114;
 const MARSHMALLON_HEIGHT = 130;
 const MYSTIC_TOMATO_WIDTH = 84;
@@ -103,7 +111,11 @@ var MAIN_ASSET = {
     gate_blocker_img: "assets/img/monster/gate_blocker.png",
     genex_controller_img: "assets/img/monster/genex_controller.png",
     hallohallo_img: "assets/img/monster/hallohallo.png",
+    kuribah_img: "assets/img/monster/kuribah.png",
+    kuribee_img: "assets/img/monster/kuribee.png",
+    kuribeh_img: "assets/img/monster/kuribeh.png",
     kuriboh_img: "assets/img/monster/kuriboh.png",
+    kuriboo_img: "assets/img/monster/kuriboo.png",
     marshmallon_img: "assets/img/monster/marshmallon.png",
     mystic_tomato_img: "assets/img/monster/mystic_tomato.png",
     purely_img: "assets/img/monster/purely.png",
@@ -388,6 +400,90 @@ var MAIN_ASSET = {
       frame: {
         width: KURIBOH_WIDTH, // 1コマの横幅
         height: KURIBOH_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // クリバースプライトシート
+    kuribah_ss: {
+      // 画像の情報
+      frame: {
+        width: KURIBAH_WIDTH, // 1コマの横幅
+        height: KURIBAH_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // クリビースプライトシート
+    kuribee_ss: {
+      // 画像の情報
+      frame: {
+        width: KURIBEE_WIDTH, // 1コマの横幅
+        height: KURIBEE_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // クリブースプライトシート
+    kuriboo_ss: {
+      // 画像の情報
+      frame: {
+        width: KURIBOO_WIDTH, // 1コマの横幅
+        height: KURIBOO_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // クリベースプライトシート
+    kuribeh_ss: {
+      // 画像の情報
+      frame: {
+        width: KURIBEH_WIDTH, // 1コマの横幅
+        height: KURIBEH_HEIGHT, // 1コマの縦幅
         rows: 1, // 画像内に設定されているコマの縦数
         cols: 2, // 画像内に設定されているコマの横数
       },

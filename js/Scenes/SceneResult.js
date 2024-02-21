@@ -27,11 +27,6 @@ phina.define("SceneResult", {
     var GalleryButton = Sprite("title_gallery_button_img");
     GalleryButton.addChildTo(this);
     GalleryButton.setPosition(this.gridX.center(-5), this.gridY.center(6.3));
-    if (OFF === g_GalleryViewFlag){
-      GalleryButton.setInteractive(false);
-      GalleryButton.alpha = 0;
-    }
-
     GalleryButton.onclick = function () {
       MySoundManager.prototype.MyPlaySound("enter2_se", false);
       this.parent.exit("sceneGallery");
@@ -48,8 +43,13 @@ phina.define("SceneResult", {
       "result_gallery_chain_tweet_img", // ランクS
     ];
     var GalleryChainTweetButton = Sprite(listGalleryChainTweetButton[g_level]);
-    GalleryChainTweetButton.addChildTo(this);
     GalleryChainTweetButton.setPosition(this.gridX.center(-5), this.gridY.center(5.2));
+
+    // ギャラリーフラグがONの場合はギャラリー鎖ボタンは非表示
+    if (OFF === g_GalleryViewFlag){
+      GalleryButton.alpha = 0;
+      GalleryChainTweetButton.addChildTo(this);
+    }
 
     // タイトルボタン
     var titleButton = Sprite("result_title_button_img");
@@ -201,7 +201,6 @@ phina.define("SceneResult", {
         this.app.pushScene(SceneThankYou());
         this.tweetFlg = OFF;
         if ("S" === g_rank || "A" === g_rank || "B" === g_rank){
-          GalleryChainTweetButton.alpha = 0;
           g_GalleryViewFlag = ON;
         }
       }

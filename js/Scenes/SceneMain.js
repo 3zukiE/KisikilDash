@@ -333,8 +333,29 @@ phina.define("SceneMain", {
           } else {
             // その他の場合、クリボーの生成(5兄弟のランダム生成)
             var shinyFlag = Math.randint(0, 99);
-            if (99 <= shinyFlag){
+            console.log(shinyFlag);
+            if (59 >= shinyFlag){
               monster = ObjectKuriboh(
+                this.gridX.span(16),
+                g_groundLine
+              ).addChildTo(e);
+            } else if (69 >= shinyFlag){
+              monster = ObjectKuribah(
+                this.gridX.span(16),
+                g_groundLine
+              ).addChildTo(e);
+            } else if (79 >= shinyFlag){
+              monster = ObjectKuribee(
+                this.gridX.span(16),
+                g_groundLine
+              ).addChildTo(e);
+            } else if (89 >= shinyFlag){
+              monster = ObjectKuriboo(
+                this.gridX.span(16),
+                g_groundLine
+              ).addChildTo(e);
+            } else if (99 >= shinyFlag){
+              monster = ObjectKuribeh(
                 this.gridX.span(16),
                 g_groundLine
               ).addChildTo(e);
@@ -727,12 +748,18 @@ phina.define("SceneMain", {
       }
 
       if (key.getKeyDown("enter")) {
-        // デバッグ用★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-        deathName = "デバッグで遷移";
-        atk = 0;
-        gameEndType = 0;
-        this.exitScene(this);
+        MySoundManager.prototype.MyPlaySound("pause_se", false);
+        g_pauseFlag = OFF;
+        this.app.pushScene(ScenePause());
       }
+
+      // デバッグ用
+      // if (key.getKeyDown("shift")) {
+      //   deathName = "デバッグで遷移";
+      //   atk = 0;
+      //   gameEndType = 0;
+      //   this.exitScene(this);
+      // }
 
       // ヒットラインの更新
       g_hitLine = hitShape.x + hitShape.width;
