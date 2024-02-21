@@ -74,12 +74,12 @@ const TIME_END_LEVEL_7 = 2.5;
 // ステージレベルレベル毎のモンスターの速度
 const MONSTER_BASE_SPEED = 10;
 const SPEED_LEVEL_1 = 1;
-const SPEED_LEVEL_2 = 1.15;
-const SPEED_LEVEL_3 = 1.3;
-const SPEED_LEVEL_4 = 1.5;
+const SPEED_LEVEL_2 = 1.2;
+const SPEED_LEVEL_3 = 1.4;
+const SPEED_LEVEL_4 = 1.6;
 const SPEED_LEVEL_5 = 1.9;
-const SPEED_LEVEL_6 = 2.4;
-const SPEED_LEVEL_7 = 2.9;
+const SPEED_LEVEL_6 = 2.2;
+const SPEED_LEVEL_7 = 2.7;
 
 const ON = 1;
 const OFF = 0;

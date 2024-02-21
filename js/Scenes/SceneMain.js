@@ -333,23 +333,22 @@ phina.define("SceneMain", {
           } else {
             // その他の場合、クリボーの生成(5兄弟のランダム生成)
             var shinyFlag = Math.randint(0, 99);
-            console.log(shinyFlag);
-            if (59 >= shinyFlag){
+            if (79 >= shinyFlag){
               monster = ObjectKuriboh(
                 this.gridX.span(16),
                 g_groundLine
               ).addChildTo(e);
-            } else if (69 >= shinyFlag){
+            } else if (84 >= shinyFlag){
               monster = ObjectKuribah(
                 this.gridX.span(16),
                 g_groundLine
               ).addChildTo(e);
-            } else if (79 >= shinyFlag){
+            } else if (89 >= shinyFlag){
               monster = ObjectKuribee(
                 this.gridX.span(16),
                 g_groundLine
               ).addChildTo(e);
-            } else if (89 >= shinyFlag){
+            } else if (94 >= shinyFlag){
               monster = ObjectKuriboo(
                 this.gridX.span(16),
                 g_groundLine
