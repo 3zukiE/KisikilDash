@@ -11,20 +11,28 @@ const TREASURE_HEIGHT = 75;
 const ROUGHKIL_WIDTH = 594;
 const ROUGHKIL_HEIGHT = 690;
 
+const ACHICHI_IGNISTER_WIDTH = 85;
+const ACHICHI_IGNISTER_HEIGHT = 108;
 const AGIDO_WIDTH = 161;
 const AGIDO_HEIGHT = 125;
 const BITRON_WIDTH = 131;
 const BITRON_HEIGHT = 97;
 const CARDCAR_D_WIDTH = 165;
 const CARDCAR_D_HEIGHT = 73;
+const CRYSTAL_BEAST_RUBY_CARBUNCLE_WIDTH = 167;
+const CRYSTAL_BEAST_RUBY_CARBUNCLE_HEIGHT = 113;
 const DARK_RESONATOR_WIDTH = 163;
 const DARK_RESONATOR_HEIGHT = 145;
 const GATE_BLOCKER_WIDTH = 105;
 const GATE_BLOCKER_HEIGHT = 131;
+const GUNKAN_SUSHIP_UNI_WIDTH = 123;
+const GUNKAN_SUSHIP_UNI_HEIGHT = 59;
 const GENEX_CONTROLLER_WIDTH = 143;
 const GENEX_CONTROLLER_HEIGHT = 167;
 const HALLOHALLO_WIDTH = 99;
 const HALLOHALLO_HEIGHT = 118;
+const HUNGRY_BURGER_WIDTH = 88;
+const HUNGRY_BURGER_HEIGHT = 134;
 const KURIBAH_WIDTH = 86;
 const KURIBAH_HEIGHT = 96;
 const KURIBEE_WIDTH = 86;
@@ -104,13 +112,17 @@ var MAIN_ASSET = {
     mystical_space_typhoon_img: "assets/img/item/mystical_space_typhoon.png",
 
     // モンスター
+    achichi_ignister_img: "assets/img/monster/achichi@ignister.png",
     agido_img: "assets/img/monster/agido.png",
     bitron_img: "assets/img/monster/bitron.png",
     cardcar_d_img: "assets/img/monster/cardcar_d.png",
+    crystal_beast_ruby_carbuncle_img: "assets/img/monster/crystal_beast_ruby_carbuncle.png",
     dark_resonator_img: "assets/img/monster/dark_resonator.png",
     gate_blocker_img: "assets/img/monster/gate_blocker.png",
     genex_controller_img: "assets/img/monster/genex_controller.png",
+    gunkan_suship_uni_img: "assets/img/monster/gunkan_suship_uni.png",
     hallohallo_img: "assets/img/monster/hallohallo.png",
+    hungry_burger_img: "assets/img/monster/hungry_burger.png",
     kuribah_img: "assets/img/monster/kuribah.png",
     kuribee_img: "assets/img/monster/kuribee.png",
     kuribeh_img: "assets/img/monster/kuribeh.png",
@@ -547,6 +559,90 @@ var MAIN_ASSET = {
       frame: {
         width: AGIDO_WIDTH, // 1コマの横幅
         height: AGIDO_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // アチチ@イグニスタースプライトシート
+    achichi_ignister_ss: {
+      // 画像の情報
+      frame: {
+        width: ACHICHI_IGNISTER_WIDTH, // 1コマの横幅
+        height: ACHICHI_IGNISTER_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // 宝玉獣ルビー・カーバンクルスプライトシート
+    crystal_beast_ruby_carbuncle_ss: {
+      // 画像の情報
+      frame: {
+        width: CRYSTAL_BEAST_RUBY_CARBUNCLE_WIDTH, // 1コマの横幅
+        height: CRYSTAL_BEAST_RUBY_CARBUNCLE_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 2, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0, 1], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 7, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // うにの軍貫スプライトシート
+    gunkan_suship_uni_ss: {
+      // 画像の情報
+      frame: {
+        width: GUNKAN_SUSHIP_UNI_WIDTH, // 1コマの横幅
+        height: GUNKAN_SUSHIP_UNI_HEIGHT, // 1コマの縦幅
+        rows: 1, // 画像内に設定されているコマの縦数
+        cols: 1, // 画像内に設定されているコマの横数
+      },
+
+      // アニメーション情報
+      animations: {
+        idle: {
+          // アニメーション名
+          frames: [0], // アニメーションのコマ指定。左上から右下に向かって0,1,2...となる。
+          next: "idle", // アニメーション終了後、次の再生アニメ。同じ名前のものを指定するとループ再生になる
+          frequency: 0, // コマ毎の間隔(数値が小さいほど早くアニメーションする)
+        },
+      },
+    },
+
+    // ハングリーバーガースプライトシート
+    hungry_burger_ss: {
+      // 画像の情報
+      frame: {
+        width: HUNGRY_BURGER_WIDTH, // 1コマの横幅
+        height: HUNGRY_BURGER_HEIGHT, // 1コマの縦幅
         rows: 1, // 画像内に設定されているコマの縦数
         cols: 2, // 画像内に設定されているコマの横数
       },

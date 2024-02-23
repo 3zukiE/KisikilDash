@@ -72,7 +72,7 @@ phina.define("SceneGallery", {
       fontSize: 36,
       fill: "black",
       x: this.gridX.center(),
-      y: this.gridY.center(-1),
+      y: this.gridY.center(-1.5),
     }).addChildTo(this);
 
     // モンスターのラベル
@@ -90,7 +90,7 @@ phina.define("SceneGallery", {
       fontSize: 36,
       fill: "black",
       x: this.gridX.center(0.2),
-      y: this.gridY.center(5.7),
+      y: this.gridY.center(5.8),
     }).addChildTo(this);
 
     // popMonsterの定義

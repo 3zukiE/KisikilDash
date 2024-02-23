@@ -73,23 +73,7 @@ phina.define("ObjectKisikil", {
         this.AnimationFrame++;
       }
 
-      // 避けたときの自力アニメーション(仮)★★★
-      // if (KISIKIL_DODGE === this.direction) {
-      //   this.AnimationFrame++;
-      //   if (1 === this.AnimationFrame) {
-      //     this.alpha = 0.5;
-      //   } else if (2 === this.AnimationFrame) {
-      //     this.alpha = 0;
-      //   } else if (3 === this.AnimationFrame) {
-      //     this.alpha = 0.5;
-      //   } else {
-      //     this.alpha = 1;
-      //     this.dodgeAnimation = 0;
-      //     this.direction = KISIKIL_DASH;
-      //   }
-      // }
-
-      // 攻撃の自力アニメーション(仮)★★★
+      // 攻撃の自力アニメーション
       if (KISIKIL_ATTACK === this.direction) {
         this.AnimationFrame++;
         if (3 < this.AnimationFrame) {
@@ -99,7 +83,7 @@ phina.define("ObjectKisikil", {
         }
       }
 
-      // 攻撃の自力アニメーション(仮)★★★
+      // 攻撃2の自力アニメーション
       if (KISIKIL_ATTACK2 === this.direction) {
         this.AnimationFrame++;
         if (3 < this.AnimationFrame) {

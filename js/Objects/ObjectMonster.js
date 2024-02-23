@@ -3,7 +3,17 @@ phina.define("ObjectMonster", {
   superClass: "phina.display.Sprite",
 
   // 初期化
-  init: function (image, spriteSheet, x, y, speed, sizeX, sizeY, atk, monsterName) {
+  init: function (
+    image,
+    spriteSheet,
+    x,
+    y,
+    speed,
+    sizeX,
+    sizeY,
+    atk,
+    monsterName
+  ) {
     this.superInit(image);
 
     this.setOrigin(0, 1);
@@ -50,7 +60,9 @@ phina.define("ObjectMonster", {
         case MONSTER_ATTACK:
           break;
         case MONSTER_TREASURE:
-          this.x -= this.speed * 2;
+          if (OFF === g_treasureStartFlag || ON === g_treasureEndFlag) {
+            this.x -= this.speed * 2;
+          }
           if (g_groundLine > this.y) {
             this.y += this.speed * 4;
             if (g_groundLine < this.y) {
@@ -59,7 +71,7 @@ phina.define("ObjectMonster", {
           }
           // キスキルの位置まで来たら、お宝を出現させる
           if (g_kisikilLine - this.width / 2 >= this.x) {
-            g_treasureFlag = ON;
+            g_treasureStartFlag = ON;
           }
           break;
         default:

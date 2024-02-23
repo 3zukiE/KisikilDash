@@ -7,7 +7,7 @@ const RIGHT = 1;
 const LEFT = 2;
 
 // ゲームバージョン
-const g_version = 0.95;
+const g_version = "1.0";
 
 const KISIKIL_IDLE = 0;
 const KISIKIL_DASH = KISIKIL_IDLE + 1;
@@ -45,34 +45,34 @@ const RANK_LEVEL_7 = "S";
 
 // ステージレベルに到達するために必要なスコア
 const SCORE_LEVEL_1 = 0;
-const SCORE_LEVEL_2 = 1200;
-const SCORE_LEVEL_3 = 2600;
-const SCORE_LEVEL_4 = 4800;
-const SCORE_LEVEL_5 = 8000;
-const SCORE_LEVEL_6 = 12400;
-const SCORE_LEVEL_7 = 18600;
+const SCORE_LEVEL_2 = 1000;
+const SCORE_LEVEL_3 = 2400;
+const SCORE_LEVEL_4 = 4400;
+const SCORE_LEVEL_5 = 7600;
+const SCORE_LEVEL_6 = 12000;
+const SCORE_LEVEL_7 = 18000;
 
 // 制作者スコア
-const SCORE_LEVEL_X = 24400;
+const SCORE_LEVEL_X = 22600;
 
 // ステージレベル毎のモンスター生成頻度
 const TIME_START_LEVEL_1 = 16;
-const TIME_END_LEVEL_1 = 22;
+const TIME_END_LEVEL_1 = 26;
 const TIME_START_LEVEL_2 = 13;
-const TIME_END_LEVEL_2 = 18;
+const TIME_END_LEVEL_2 = 22;
 const TIME_START_LEVEL_3 = 10;
-const TIME_END_LEVEL_3 = 14;
+const TIME_END_LEVEL_3 = 18;
 const TIME_START_LEVEL_4 = 7;
-const TIME_END_LEVEL_4 = 10;
+const TIME_END_LEVEL_4 = 14;
 const TIME_START_LEVEL_5 = 5;
-const TIME_END_LEVEL_5 = 6.5;
+const TIME_END_LEVEL_5 = 10;
 const TIME_START_LEVEL_6 = 3;
-const TIME_END_LEVEL_6 = 4.5;
+const TIME_END_LEVEL_6 = 6;
 const TIME_START_LEVEL_7 = 1.5;
-const TIME_END_LEVEL_7 = 2.5;
+const TIME_END_LEVEL_7 = 3;
 
 // ステージレベルレベル毎のモンスターの速度
-const MONSTER_BASE_SPEED = 10;
+const MONSTER_BASE_SPEED = 12;
 const SPEED_LEVEL_1 = 1;
 const SPEED_LEVEL_2 = 1.2;
 const SPEED_LEVEL_3 = 1.4;
@@ -125,7 +125,8 @@ var g_gameEndFlag = 0;
 var g_hornFlg = 0;
 var g_typhoonFlg = 0;
 var g_pauseFlag = OFF;
-var g_treasureFlag = OFF;
+var g_treasureStartFlag = OFF;
+var g_treasureEndFlag = OFF;
 var g_GalleryViewFlag = OFF;
 
 // メイン処理

@@ -15,7 +15,8 @@ phina.define("SceneMain", {
     g_groundLine = this.gridY.center(4.7);
     g_flyingLine = this.gridY.center(1.5);
     g_kisikilLine = this.gridX.center(-5.5);
-    g_treasureFlag = OFF;
+    g_treasureStartFlag = OFF;
+    g_treasureEndFlag = OFF;
     g_makeMonsterFlag = OFF;
     this.time = 0;
     this.makeMonsterTime = 20;
@@ -80,15 +81,15 @@ phina.define("SceneMain", {
       fill: "white", // 文字色
       stroke: "red", // 枠色
     })
-    .setOrigin(0,1)
-    .setPosition(g_kisikilLine + 30, g_flyingLine - 30)
-    .addChildTo(this);
+      .setOrigin(0, 1)
+      .setPosition(g_kisikilLine + 30, g_flyingLine - 30)
+      .addChildTo(this);
     kisikilStatusChangeLabel.alpha = 0;
 
     // 決闘開始オブジェクト
     var mainCountDuel = Sprite("main_count_duel_img")
       .setPosition(this.gridX.center(), this.gridY.center())
-      .setScale(0.5,0.5)
+      .setScale(0.5, 0.5)
       .addChildTo(this);
     mainCountDuel.alpha = 0;
 
@@ -132,12 +133,26 @@ phina.define("SceneMain", {
     treasure.x = g_kisikilLine;
     treasure.y = g_groundLine;
     treasure.alpha = 0;
+    treasure.flag = OFF;
 
     treasure.update = function () {
-      // お宝を盗まれたらお宝を出現させ、モンスターに追従させる
-      if (ON === g_treasureFlag) {
-        this.alpha = 1;
+      // お宝アニメーションが終わったら、モンスターに追従させる
+      if (ON === g_treasureEndFlag) {
         this.x -= MONSTER_BASE_SPEED * g_MonsterSpeedMag * 2;
+      }
+      // お宝を盗まれたらお宝を出現させ、お宝アニメーション
+      if (ON === g_treasureStartFlag) {
+        if (OFF === this.flag) {
+          this.flag = ON;
+          this.alpha = 1;
+          this.tweener
+            .clear()
+            .by({ y: -100 }, 300, "easeOutQuad")
+            .by({ y: 100 }, 300, "easeInQuad")
+            .call(function () {
+              g_treasureEndFlag = ON;
+            });
+        }
       }
     };
 
@@ -174,7 +189,7 @@ phina.define("SceneMain", {
     // 当たり判定ボックス
     var hitShape = Shape({
       width: this.gridX.width / 4.8, // 横サイズ
-      height: (SCREEN_Y / 3), // 縦サイズ
+      height: SCREEN_Y / 3, // 縦サイズ
       backgroundColor: "yellow",
     })
       .setOrigin(0, 1)
@@ -185,7 +200,7 @@ phina.define("SceneMain", {
     // 死亡判定ボックス
     var deathShape = Shape({
       width: 1, // 横サイズ
-      height: (SCREEN_Y / 3), // 縦サイズ
+      height: SCREEN_Y / 3, // 縦サイズ
       backgroundColor: "red",
     })
       .setOrigin(1, 1)
@@ -212,7 +227,7 @@ phina.define("SceneMain", {
         );
         if (2 <= this.alpha) {
           SoundManager.stopMusic();
-          e.exit({gameEndType : gameEndType, deathName : deathName, atk : atk});
+          e.exit({ gameEndType: gameEndType, deathName: deathName, atk: atk });
         }
       };
     };
@@ -234,7 +249,14 @@ phina.define("SceneMain", {
         // モンスター生成時、7%の確率でアイテム出現
         var spawnFlag = Math.randint(0, 99);
         if (10 <= spawnFlag) {
-          var monsterFlag = Math.randint(0, 13);
+          // レベルに応じて生成するモンスターを制限する
+          if (LEVEL_5 <= g_level) {
+            var monsterFlag = Math.randint(0, 17);
+          } else if (LEVEL_3 <= g_level) {
+            var monsterFlag = Math.randint(0, 12);
+          } else {
+            var monsterFlag = Math.randint(0, 6);
+          }
           if (0 === monsterFlag) {
             // ハネクリボー
             monster = ObjectWingedKuriboh(
@@ -272,8 +294,8 @@ phina.define("SceneMain", {
               g_groundLine
             ).addChildTo(e);
           } else if (6 === monsterFlag) {
-            // ジェネクス・コントローラー
-            monster = ObjectGenexController(
+            // うにの軍貫
+            monster = ObjectGunkanSushipUni(
               this.gridX.span(16),
               g_groundLine
             ).addChildTo(e);
@@ -281,7 +303,7 @@ phina.define("SceneMain", {
             // ダーク・リゾネーター
             monster = ObjectDarkResonator(
               this.gridX.span(16),
-              g_groundLine
+              Math.randint(0, 1) ? g_groundLine : g_flyingLine
             ).addChildTo(e);
           } else if (8 === monsterFlag) {
             // キラー・トマト
@@ -299,7 +321,7 @@ phina.define("SceneMain", {
             // アギド
             monster = ObjectAgido(
               this.gridX.span(16),
-              g_groundLine
+              Math.randint(0, 1) ? g_groundLine : g_flyingLine
             ).addChildTo(e);
           } else if (11 === monsterFlag) {
             // クリッター
@@ -311,9 +333,33 @@ phina.define("SceneMain", {
             // 蛇眼の炎燐
             monster = ObjectSnakeEyesPoplar(
               this.gridX.span(16),
-              g_groundLine
+              Math.randint(0, 1) ? g_groundLine : g_flyingLine
             ).addChildTo(e);
           } else if (13 === monsterFlag) {
+            // 宝玉獣ルビー・カーバンクル
+            monster = ObjectCrystalBeastRubyCarbuncle(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (14 === monsterFlag) {
+            // アチチ@イグニスター
+            monster = ObjectAchichiIgnister(
+              this.gridX.span(16),
+              g_flyingLine
+            ).addChildTo(e);
+          } else if (15 === monsterFlag) {
+            // ジェネクス・コントローラー
+            monster = ObjectGenexController(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (16 === monsterFlag) {
+            // ハングリーバーガー
+            monster = ObjectHungryBurger(
+              this.gridX.span(16),
+              g_groundLine
+            ).addChildTo(e);
+          } else if (17 === monsterFlag) {
             // ゲート・ブロッカー
             monster = ObjectGateblocker(
               this.gridX.span(16),
@@ -333,30 +379,30 @@ phina.define("SceneMain", {
           } else {
             // その他の場合、クリボーの生成(5兄弟のランダム生成)
             var shinyFlag = Math.randint(0, 99);
-            if (79 >= shinyFlag){
+            if (91 >= shinyFlag) {
               monster = ObjectKuriboh(
                 this.gridX.span(16),
                 g_groundLine
               ).addChildTo(e);
-            } else if (84 >= shinyFlag){
+            } else if (93 >= shinyFlag) {
               monster = ObjectKuribah(
                 this.gridX.span(16),
-                g_groundLine
+                Math.randint(0, 1) ? g_groundLine : g_flyingLine
               ).addChildTo(e);
-            } else if (89 >= shinyFlag){
+            } else if (95 >= shinyFlag) {
               monster = ObjectKuribee(
                 this.gridX.span(16),
-                g_groundLine
+                Math.randint(0, 1) ? g_groundLine : g_flyingLine
               ).addChildTo(e);
-            } else if (94 >= shinyFlag){
+            } else if (97 >= shinyFlag) {
               monster = ObjectKuriboo(
                 this.gridX.span(16),
-                g_groundLine
+                Math.randint(0, 1) ? g_groundLine : g_flyingLine
               ).addChildTo(e);
-            } else if (99 >= shinyFlag){
+            } else if (99 >= shinyFlag) {
               monster = ObjectKuribeh(
                 this.gridX.span(16),
-                g_groundLine
+                Math.randint(0, 1) ? g_groundLine : g_flyingLine
               ).addChildTo(e);
             }
           }
@@ -493,29 +539,8 @@ phina.define("SceneMain", {
     this.countDown = function () {
       var self = this; // this の値を保存
       // カウントダウン3
-      mainCount3.tweener.clear()
-      .by(
-        {
-          alpha: 1,
-          x: -100,
-        },
-        600
-      )
-      .call(function () {
-        MySoundManager.prototype.MyPlaySound("enter4_se", false);
-      })
-      .wait(200)
-      .by(
-        {
-          alpha: -1,
-          x: -100,
-        },
-        200
-      )
-      .call(function () {
-        mainCount3.remove();
-        // カウントダウン2
-        mainCount2.tweener.clear()
+      mainCount3.tweener
+        .clear()
         .by(
           {
             alpha: 1,
@@ -535,69 +560,94 @@ phina.define("SceneMain", {
           200
         )
         .call(function () {
-          mainCount2.remove();
-          // カウントダウン1
-          mainCount1.tweener.clear()
-          .by(
-            {
-              alpha: 1,
-              x: -100,
-            },
-            600
-          )
-          .call(function () {
-            MySoundManager.prototype.MyPlaySound("enter4_se", false);
-          })
-          .wait(200)
-          .by(
-            {
-              alpha: -1,
-              x: -100,
-            },
-            200
-          )
-          .call(function () {
-            mainCount1.remove();
-            // 決闘開始
-            mainCountDuel.tweener.clear()
+          mainCount3.remove();
+          // カウントダウン2
+          mainCount2.tweener
+            .clear()
             .by(
               {
                 alpha: 1,
-                scaleX: 0.8,
-                scaleY: 0.8,
+                x: -100,
               },
               600
             )
             .call(function () {
-              MySoundManager.prototype.MyPlaySound("main_bgm", true);
-              // ゲーム開始
-              self.playGameFlag = ON;
-              self.time = 0;
-              // 判定ラインを透明化
-              hitShape.alpha = 0;
-              deathShape.alpha = 0;
-              // キスキル：ダッシュ
-              mainKisikil.direction = KISIKIL_DASH;
-              mainKisikil.updateStateFlag = ON;
-              // モンスター生成開始
-              g_makeMonsterFlag = ON;
+              MySoundManager.prototype.MyPlaySound("enter4_se", false);
             })
-            .wait(400)
+            .wait(200)
             .by(
               {
                 alpha: -1,
-                scaleX: 2,
-                scaleY: 2,
+                x: -100,
               },
               200
             )
             .call(function () {
-              mainCountDuel.remove();
-            })
-          });
+              mainCount2.remove();
+              // カウントダウン1
+              mainCount1.tweener
+                .clear()
+                .by(
+                  {
+                    alpha: 1,
+                    x: -100,
+                  },
+                  600
+                )
+                .call(function () {
+                  MySoundManager.prototype.MyPlaySound("enter4_se", false);
+                })
+                .wait(200)
+                .by(
+                  {
+                    alpha: -1,
+                    x: -100,
+                  },
+                  200
+                )
+                .call(function () {
+                  mainCount1.remove();
+                  // 決闘開始
+                  mainCountDuel.tweener
+                    .clear()
+                    .by(
+                      {
+                        alpha: 1,
+                        scaleX: 0.8,
+                        scaleY: 0.8,
+                      },
+                      600
+                    )
+                    .call(function () {
+                      MySoundManager.prototype.MyPlaySound("main_bgm", true);
+                      // ゲーム開始
+                      self.playGameFlag = ON;
+                      self.time = 0;
+                      // 判定ラインを透明化
+                      hitShape.alpha = 0;
+                      deathShape.alpha = 0;
+                      // キスキル：ダッシュ
+                      mainKisikil.direction = KISIKIL_DASH;
+                      mainKisikil.updateStateFlag = ON;
+                      // モンスター生成開始
+                      g_makeMonsterFlag = ON;
+                    })
+                    .wait(400)
+                    .by(
+                      {
+                        alpha: -1,
+                        scaleX: 2,
+                        scaleY: 2,
+                      },
+                      200
+                    )
+                    .call(function () {
+                      mainCountDuel.remove();
+                    });
+                });
+            });
         });
-      });
-    }
+    };
 
     // ホーン取得時の演出
     this.horn = function () {
@@ -609,17 +659,18 @@ phina.define("SceneMain", {
 
       // ラベル表示
       kisikilStatusChangeLabel.text = "ATK700上昇！";
-      kisikilStatusChangeLabel.tweener.clear()
-      .to({ alpha: 1 }, 400)
-      .to({ alpha: 0 }, 100)
-      .to({ alpha: 1 }, 400)
-      .to({ alpha: 0 }, 100)
-      .to({ alpha: 1 }, 400)
-      .to({ alpha: 0 }, 100)
-      .to({ alpha: 1 }, 400)
-      .wait(400)
-      .to({ alpha: 0 }, 100);
-    }
+      kisikilStatusChangeLabel.tweener
+        .clear()
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 100)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 100)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 100)
+        .to({ alpha: 1 }, 400)
+        .wait(400)
+        .to({ alpha: 0 }, 100);
+    };
 
     // サイクロン演出 サイクロンぶつかったときにやられ顔でくるくる回したい
     this.typhoon = function () {
@@ -647,17 +698,17 @@ phina.define("SceneMain", {
 
       // ラベル表示
       kisikilStatusChangeLabel.text = "装備破壊！";
-      kisikilStatusChangeLabel.tweener.clear()
-      .to({ alpha: 1 }, 400)
-      .to({ alpha: 0 }, 100)
-      .to({ alpha: 1 }, 400)
-      .to({ alpha: 0 }, 100)
-      .to({ alpha: 1 }, 400)
-      .to({ alpha: 0 }, 100)
-      .to({ alpha: 1 }, 400)
-      .wait(400)
-      .to({ alpha: 0 }, 100);
-
+      kisikilStatusChangeLabel.tweener
+        .clear()
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 100)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 100)
+        .to({ alpha: 1 }, 400)
+        .to({ alpha: 0 }, 100)
+        .to({ alpha: 1 }, 400)
+        .wait(400)
+        .to({ alpha: 0 }, 100);
 
       // ホーンが取れていく処理
       if (ON === g_hornKisikilFlag) {
@@ -667,16 +718,17 @@ phina.define("SceneMain", {
           .setPosition(g_kisikilLine, g_flyingLine)
           .setScale(0.7, 0.7)
           .addChildTo(this);
-        hornOfTheUnicorn.tweener.clear()
-        .by(
-          {
-            x: -20,
-            y: -30,
-            rotation: 180,
-          },
-          100
-        )
-        .setLoop(true);
+        hornOfTheUnicorn.tweener
+          .clear()
+          .by(
+            {
+              x: -20,
+              y: -30,
+              rotation: 180,
+            },
+            100
+          )
+          .setLoop(true);
         // 多分2回目のホーン生成時に1個目のホーンが消える...ま、ええか
         if (0 - hornOfTheUnicorn.sizeX >= hornOfTheUnicorn.x) {
           hornOfTheUnicorn.remove();
@@ -781,7 +833,7 @@ phina.define("SceneMain", {
         monsterGroup.children.forEach(function (m) {
           if (MONSTER_ATTACK === m.flag) {
             // キスキル死亡時モンスターの前まで移動
-            if (mainKisikil.x < m.x){
+            if (mainKisikil.x < m.x) {
               mainKisikil.x = m.x;
             }
             // キスキル：デス
@@ -789,7 +841,6 @@ phina.define("SceneMain", {
             deathName = m.monsterName;
             gameEndType = m.gameEndType;
             atk = m.atk;
-
 
             return;
           }
